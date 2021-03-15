@@ -34,7 +34,37 @@ for img in glob.glob(inputfolder_path+"/*.jpg"):
   i=i+1
 ```
 
-> after constructing your blur iamges,you
+> after constructing your blur iamges,you must split these images in three groups as `train` , `test` and `valid` so,i splitted them as ~3600 images for train,400 iamges for test and 100 images for vlidation,in three directories:
+```
+*  dataset/train/images/blur && dataset/train/images/blur
+*  dataset/test/images/blur && dataset/test/images/blur
+*  dataset/valid/images/blur && dataset/valid/images/blur
+```
+> HINT:due to large size of dataset,i have not able to set them in github,so if you need my dataset,please contact me via my email address.
+
+## MODEL
+> we have 4 types for applying our model :
+* Single-Scale Network without long-skip connection
+* Single-Scale Network with long-skip connection
+* Multi-Scale Network without long-skip connection
+* Multi-Scale Network with long-skip connection
+> you see the 4 conditions of this architecture,in below image:
+![architecture](https://user-images.githubusercontent.com/53394692/111139212-180c9b00-8596-11eb-8782-a11dd1647655.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
