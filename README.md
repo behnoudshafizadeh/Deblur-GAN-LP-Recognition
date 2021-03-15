@@ -50,13 +50,55 @@ for img in glob.glob(inputfolder_path+"/*.jpg"):
 * Multi-Scale Network with long-skip connection
 > you see the 4 conditions of this architecture,in below image:
 ![architecture](https://user-images.githubusercontent.com/53394692/111139212-180c9b00-8596-11eb-8782-a11dd1647655.jpg)
+> after training over these models,i found that the (Multi-Scale Network with long-skip connection) had better PSNR,SSIM,MSSIM so i selected this model as deblur module.
 
-
-
-
-
-
-
+## Training Procedures
+* 1.mount your google drive and change your `dir` basis on position you set the `Deblur-GAN-LP-Recognition` directory :
+```
+from google.colab import drive
+drive.mount('/content/drive/')
+import os
+os.chdir("/content/drive/MyDrive/Pytorch-Image-Deblurring-master-run7")
+!ls
+```
+* 2.install your requirements in google colab baisis on `requirements.txt` file in directory:
+```
+!pip install -r requirements.txt
+```
+* 3.training and testing different conditions :
+> * for train/test multiskip :
+```
+#!python main.py --gpu 0 --multi --skip --exp_name multi_skip --batch_size 16 --epochs 400 --finetuning
+#for testing
+#!python test.py --gpu 0 --exp_name multi_skip --padding 0
+#for applying model
+#!python demo.py --gpu 0 --train_dir pretrained --exp_name multi_skip --image dataset/test/images/blur/*.jpg
+```
+> * for train/test multi-noskip :
+```
+#!python main.py --gpu 0 --multi --exp_name multi_noskip --batch_size 16 --epochs 400 --finetuning
+#for testing
+#!python test.py --gpu 0 --exp_name multi_noskip --padding 0
+#for applying model
+#!python demo.py --gpu 0 --train_dir pretrained --exp_name multi_noskip --image dataset/test/images/blur/*.jpg
+```
+> * for train/test single-skip :
+ ```
+#!python main.py --gpu 0 --skip --exp_name single_skip --batch_size 16 --epochs 400 --finetuning
+#for testing
+#!python test.py --gpu 0 --exp_name single_skip --padding 0
+#for applying model
+#!python demo.py --gpu 0 --train_dir pretrained --exp_name single_skip --image dataset/test/images/blur/*.jpg
+ ```
+> * for train/test single-noskip :
+```
+#!python main.py --gpu 0 --exp_name single_noskip --batch_size 16 --epochs 400 --finetuning
+#for testing
+#!python test.py --gpu 0 --exp_name single_noskip --padding 0
+#for applying model
+#!python demo.py --gpu 0 --train_dir pretrained --exp_name single_noskip --image dataset/test/images/blur/*.jpg
+```
+> for example,
 
 
 
