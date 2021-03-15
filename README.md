@@ -68,7 +68,7 @@ os.chdir("/content/drive/MyDrive/Pytorch-Image-Deblurring-master-run7")
 * 3.training and testing different conditions :
 > * for train/test multiskip :
 ```
-#!python main.py --gpu 0 --multi --skip --exp_name multi_skip --batch_size 16 --epochs 400 --finetuning
+#!python main.py --gpu 0 --multi --skip --exp_name multi_skip --batch_size 16 --epochs 400 
 #for testing
 #!python test.py --gpu 0 --exp_name multi_skip --padding 0
 #for applying model
@@ -76,7 +76,7 @@ os.chdir("/content/drive/MyDrive/Pytorch-Image-Deblurring-master-run7")
 ```
 > * for train/test multi-noskip :
 ```
-#!python main.py --gpu 0 --multi --exp_name multi_noskip --batch_size 16 --epochs 400 --finetuning
+#!python main.py --gpu 0 --multi --exp_name multi_noskip --batch_size 16 --epochs 400 
 #for testing
 #!python test.py --gpu 0 --exp_name multi_noskip --padding 0
 #for applying model
@@ -84,7 +84,7 @@ os.chdir("/content/drive/MyDrive/Pytorch-Image-Deblurring-master-run7")
 ```
 > * for train/test single-skip :
  ```
-#!python main.py --gpu 0 --skip --exp_name single_skip --batch_size 16 --epochs 400 --finetuning
+#!python main.py --gpu 0 --skip --exp_name single_skip --batch_size 16 --epochs 400 
 #for testing
 #!python test.py --gpu 0 --exp_name single_skip --padding 0
 #for applying model
@@ -92,14 +92,39 @@ os.chdir("/content/drive/MyDrive/Pytorch-Image-Deblurring-master-run7")
  ```
 > * for train/test single-noskip :
 ```
-#!python main.py --gpu 0 --exp_name single_noskip --batch_size 16 --epochs 400 --finetuning
+#!python main.py --gpu 0 --exp_name single_noskip --batch_size 16 --epochs 400 
 #for testing
 #!python test.py --gpu 0 --exp_name single_noskip --padding 0
 #for applying model
 #!python demo.py --gpu 0 --train_dir pretrained --exp_name single_noskip --image dataset/test/images/blur/*.jpg
 ```
-> for example,
+> for example,i run first code block `multi-skip` basis on my system configuration,so after ending `train`,in `result/multi_skip/model` directory i got weight files as ,`last_epoch.pt`,`model_lastest.pt` and `model_obj.pt`,besides,in `result/multi_skip` directory one file was created as `params.txt` that show you `hyperparameters` in your model.
 
+> for testing the model,and seeing the results basis on your `test` dataset directory,after running above command ,one file will create as `test_logs.txt` same as below iamge:
+
+![Capture](https://user-images.githubusercontent.com/53394692/111178420-5f0f8600-85c0-11eb-9ffc-729a642327cf.PNG)
+> this result show the model performance in different measures as `PSNR`,`SSIM`and `MSSIM` .
+
+> for seeing results on test images move files `last_epoch.pt`,`model_lastest.pt` and `model_obj.pt` in `pretrained/multi_skip/model` directory,besides,put `params.txt` in `pretrained/multi_skip` directory,then running above command.after running command the image results will store in `pretrained/multi_skip/demo` directory.in below chart ,you can see the results of deblurred images in `demo` directory :
+
+|  org(image_64 ) | blurred | deblurred |
+| ----------- | -------- | --------- | 
+| ![64](https://user-images.githubusercontent.com/53394692/111185586-5ec6b900-85c7-11eb-9b37-d1370d5a1edb.jpg) | ![64](https://user-images.githubusercontent.com/53394692/111185892-b6652480-85c7-11eb-9137-22c94a345865.jpg) | ![64](https://user-images.githubusercontent.com/53394692/111186034-dac10100-85c7-11eb-9e95-a13fced37d53.jpg) |
+   
+> see results of object detection before/after deblurgan,we see that the results of character recognition will have better detection after using deblurgan.
+
+| before-deblurgan  | after-deblurgan | 
+| ----------- | -------- | 
+| ![before](https://user-images.githubusercontent.com/53394692/111186977-ccbfb000-85c8-11eb-8f46-4073cbadcaf9.PNG) | ![after](https://user-images.githubusercontent.com/53394692/111187048-de08bc80-85c8-11eb-8d6a-e4a80323d71f.PNG) | 
+
+## LICENSE
+> this project was done by me `behnoud shafizadeh` and my co-worker `navid pourhadi` in the kharazmi university lab,supervised by `DR.Farshad Eshghi` and `DR.Manoochehr KelarEstaghi`,furthermore,this paroject is conveting to paper that we are publishing it now in journal,so the full source of code and dataset in this project are out authority and related to `kharazmi university of tehran`,so if you would like to contiribute with our group and access to out document,please contact with our emails : `behnud.shafizadeh@gmail.com` and `npourhadi1998@gmail.com`,thanks for your consideration.
+
+## Refrences
+> the following things inspire me to work on this project :
+
+* [hieubkset](https://github.com/hieubkset/Pytorch-Image-Deblurring) github repository.
+* [paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/Nah_Deep_Multi-Scale_Convolutional_CVPR_2017_paper.pdf) published in CVPR which is greatest conference in computer vision.
 
 
 
